@@ -1,10 +1,21 @@
 const FlightService = require('../services/flight-service');
+const { SuccessCodes } = require('../utils/error-codes');
 const flightService = new FlightService();
 
 const create = async (req, res) => {
     try {
-        const flight = await flightService.createFlight(req.body);
-        return res.status(201).json({
+        const flightRequestData = {
+            flightNumber: req.body.flightNumber,
+            airplaneId: req.body.airplaneId,
+            departureAirportId: req.body.departureAirportId,
+            arrivalAirportId: req.body.arrivalAirportId,
+            arrivalTime: req.body.arrivalTime,
+            departureTime: req.body.departureTime,
+            price: req.body.price,
+            boardingGate: req.body.boardingGate
+        };
+        const flight = await flightService.createFlight(flightRequestData);
+        return res.status(SuccessCodes.CREATED).json({
             data: flight,
             success: true,
             message: "successfully created a flight",
@@ -24,7 +35,7 @@ const create = async (req, res) => {
 const get = async (req, res) => {
     try {
         const flight = await flightService.getFlight(req.params.id);
-        return res.status(200).json({
+        return res.status(SuccessCodes.OK).json({
             data: flight,
             success: true,
             message: "successfully fetched a flight",
@@ -43,7 +54,7 @@ const get = async (req, res) => {
 const getAll = async (req, res) => {
     try {
         const flights = await flightService.getAllFlights(req.query);
-        return res.status(200).json({
+        return res.status(SuccessCodes.OK).json({
             data: flights,
             success: true,
             message: "successfully fetched all flights",
@@ -62,7 +73,7 @@ const getAll = async (req, res) => {
 const update = async (req, res) => {
     try {
         const flight = await flightService.updateFlight(req.params.id, req.body);
-        return res.status(200).json({
+        return res.status(SuccessCodes.OK).json({
             data: flight,
             success: true,
             message: "successfully updated a flight",
