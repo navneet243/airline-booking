@@ -1,1 +1,1 @@
-## Flights Service
+## Auth Service
