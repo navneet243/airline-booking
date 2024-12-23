@@ -1,6 +1,6 @@
 const express = require('express');
 const {PORT} = require('./config/serverConfig');
-const ApiRoutes = require('./routes/index')
+const ApiRoutes = require('./routes/index');
 
 const setupAndStartServer = async () => {
     const app= express();
