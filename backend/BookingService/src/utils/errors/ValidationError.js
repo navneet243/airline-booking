@@ -1,7 +1,7 @@
 const { StatusCodes} = require("http-status-codes");
 
 class ValidationError extends Error{
-    construtor(error){
+    constructor(error){
         super();
         let explanation = [];
         error.errors.forEach((err) => {
@@ -13,3 +13,5 @@ class ValidationError extends Error{
         this.statusCode= StatusCodes.BAD_REQUEST;
     }
 }
+
+module.exports = ValidationError
