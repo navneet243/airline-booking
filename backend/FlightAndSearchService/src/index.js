@@ -10,7 +10,7 @@ const setupAndStartServer = async () => {
     app.use(express.json());
     app.use(express.urlencoded({extended:true}));
 
-    app.use('/api', ApiRoutes);
+    app.use('/flightsService/api', ApiRoutes);
 
     app.listen(PORT,()=>{
         console.log(`Server listening at ${PORT}`);

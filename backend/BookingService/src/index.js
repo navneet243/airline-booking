@@ -9,14 +9,14 @@ const setupAndStartServer = () => {
     app.use(express.json());
     app.use(express.urlencoded({extended:true}));
 
-    app.use('/api',apiRoutes);
+    app.use('/bookingService/api',apiRoutes);
 
     app.listen(PORT,() => {
         console.log(`server listening at ${PORT}`);
         if(process.env.DB_SYNC){
             db.sequelize.sync({alter:true})
         }
-        console.log(`Flight service path is: ${FLIGHT_SERVICE_PATH}`);
+        // console.log(`Flight service path is: ${FLIGHT_SERVICE_PATH}`);
     })
 }
 

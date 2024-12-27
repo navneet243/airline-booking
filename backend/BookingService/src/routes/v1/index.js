@@ -3,6 +3,6 @@ const { create } = require("../../controller/BookingController");
 
 const router = express.Router();
 
-router.use('/booking', create)
+router.post('/booking', create)
 
 module.exports = router;
